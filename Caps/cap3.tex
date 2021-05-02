@@ -1,0 +1,183 @@
+%
+%	CAPITULO 3
+%
+
+\chapterimage{../Pictures/head2.png} % Chapter heading image
+\chapter{Elementos en compresión}
+\section{Tipos de elementos en compresión}
+\section{Pandeo en columnas}
+\begin{example}[Cálculo de la carga crítica de pandeo]
+\[\left.\begin{matrix}
+P u2-k\left(\frac{6}{L}\cdot u2-\frac{3}{L}\cdot u1\right)=0\\ P u1-k\left(\frac{6}{L}\cdot u1-\frac{3}{L}\cdot u2\right)=0
+
+\end{matrix}\right\}\Rightarrow \begin{matrix}
+(P-\frac{6k}{L})\cdot u1+\frac{3k}{L}\cdot u2=0\\
+(P-\frac{6k}{L})\cdot u2+\frac{3k}{L}\cdot u1=0
+\end{matrix}\\ \]
+
+\[\begin{pmatrix}
+P-\frac{6k}{L} &\frac{3k}{L} \\ 
+ \frac{3k}{L}&P-\frac{6k}{L} 
+\end{pmatrix}\begin{Bmatrix}
+u1\\u2
+
+\end{Bmatrix}=\begin{Bmatrix}
+0\\0
+
+\end{Bmatrix}\Rightarrow (P-\frac{6k}{L})^2 u2+\frac{3k}{L}^2=0\]
+\[
+P_1=\frac{9k}{L}\\
+P_2=\frac{3k}{L}\]
+\begin{align*}
+M_r=M_e\\
+M_r=k\cdot\alpha\\
+M_e=P\cdot u\\
+P\cdot u1-k(\alpha_1-\alpha_2)=0\\
+P\cdot u2-k(\alpha_3-\alpha_2)=0\\
+u1=\alpha_1\frac{L}{3}\rightarrow \alpha_1=\frac{3}{L}u1\\
+u2=\alpha_3\frac{L}{3}\rightarrow \alpha_3=\frac{3}{L}u2\\
+u2-u1=\alpha_2\frac{L}{3}\rightarrow \alpha_2=\frac{3}{L}(u2-u1)\\
+\frac{5}{12}L(M_1\cdot M_2)L=h\\
+M_1=P\cdot \Delta\\
+\end{align*}
+\end{example}
+\begin{exercise}[Ejercicio de aplicación pandeo de columna]
+\begin{align*}
+\frac{5}{12}(M_i\cdot M_k)L&=EI\Delta\\
+\frac{1}{3}L(M_i\cdot M_k)&=EI\Delta\\
+M_i&=P\cdot \Delta\\
+M_k&=1\cdot h\\
+\frac{5}{12}(P\cdot \Delta)\cdot(1\cdot h)\cdot h \cdot\frac{1}{EI_s}+\frac{1}{3}(P\cdot \Delta)\cdot(1\cdot h)\cdot L \cdot\frac{1}{EI_b}&=\Delta\\
+\frac{5}{12}(P\cdot \Delta)\cdot h^2 +
+\frac{1}{3}(P\cdot \Delta)\cdot h\cdot L \cdot\frac{I_s}{I_b}&=EI_s\Delta\\
+P\cdot h(\frac{5}{12}\cdot h +
+\frac{1}{3}\cdot L \cdot\frac{I_s}{I_b})&=EI_s\\
+P_{cr}&=\frac{EI_s}{h(\frac{5}{12}\cdot h +
+\frac{1}{3}\cdot L \cdot\frac{I_s}{I_b})}\\
+I_b&=2I_s\\
+h&=2L\\
+P_{cr}&=\frac{2EI_s}{h^2}\\
+P_{cr}&=\frac{\pi^2 EI_s}{\beta^2 h^2}\\
+\beta&=\frac{\pi}{\sqrt{2}}=2,22
+\end{align*}
+\end{exercise}
+\section{Diseño de elementos en compresión}
+\section{Ejemplos de aplicación}
+\\
+\begin{example}[Ejemplo de diseño a compresión de marco simple.]
+Se deberá diseñar el perfil de la estructura de la figura 3, considerando los siguientes parámetros:
+Acero $A36$ $(253 MPa)$\\
+Elasticidad $E=200.000 MPa$\\
+$H=4,5 m$\\
+$L=6,0 m$\\
+\\
+Las cargas en los extremos serán las siguientes:\\
+$DL=100 tonf$\\
+$LL=125 tonf$\\
+\\
+Con combinaciones de carga para ASD y LRFD:\\
+ASD:\\
+$C=DL+LL$\\
+LRFD:\\
+$C=1,2DL+1,6LL$\\
+\vspace{5mm}
+Considerar un perfil W12x120\\
+\vspace{5mm}
+\textit{Solución:}\\
+\vspace{5mm}
+Primero se deberán calcular las combinaciones de carga para ASD y LRFD:\\
+ASD\\
+$C_{ASD}=1000kN+1250kN=2250 kN$\\
+$P_{t}=2250kN$ Carga de trabajo
+LRFD:\\
+$C_{LRFD}=1,2\cdot100kN+1,6\cdot 125kN=3200 kN $\\
+$P_{n}=3200kN$ Carga nominal
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccccccc}
+\hline
+\multirow{2}{*}{W12x120} & b_f      & t_f      & A        & d       & t_w     & r     \\ \cline{2-7} 
+                         & 12.32in & 1.105in & 35.3in^2 & 13.12in & 0.71in & 5.5in \\ \hline
+\end{tabular}
+\end{table}
+Obtenidos los parámetros geométricos del perfil, se deberá comenzar con la comprobación, en un primer acercamiento se procederá a calcular las esbelteces del alma y el ala mediante el uso de las relaciones ancho-espesor:\\
+Esbeltez del ala:\\
+\begin{align*}
+\frac{b_{f}}{2t_f}<0,56\sqrt{\frac{E}{F_y}}
+\end{align*}
+De acuerdo con los parámetros geométricos del perfil y del material se tiene que:
+\begin{align*}
+    \frac{12,32in}{2\cdot 1,105in}=5,58\\
+    0,56\sqrt{\frac{200.000MPa}{253MPa}}=15,74\\
+    5,58<15,74
+\end{align*}
+Por lo tanto no hay pandeo local del ala.
+También deberá ser necesario realizar las verificaciones de esbeltez del alma, por lo que se procederá a comprobar las relaciones ancho espesor como sigue:
+\begin{align*}
+    \frac{d}{t_w}<1,49\sqrt{\frac{E}{F_y}}
+\end{align*}
+De acuerdo a lo indicado en el párrafo anterior, se tiene que para el alma del perfil de acero:
+\begin{gather*}
+    \frac{13,12in}{0,79in}=18,48\\
+    1,49\sqrt{\frac{200.000MPa}{253MPa}}=41,89\\
+    18,48<41,89
+\end{gather*}
+Tampoco hay presencia de pandeo local del alma. De hecho en ambos casos los valores son menos de un 45\% del valor límite.
+Como ambos casos de las relaciones ancho espesor resultan menores que los limites, se dice que la sección es \textbf{compacta} y por lo tanto se deberán usar las formulaciones para ello.\\
+Para poder resolver el problema de diseño, se necesita evaluar la esbeltez del perfil, es decir la relación $\frac{kL}{r}$ y para ello es necesario saber el valor de $k$ que es el factor de longitud efectiva de los elementos sometidos a cargas de compresión. Por lo que se es necesario realizar el cálculo de este factor.\\
+Se utiliza el método de doble integración, en donde se tiene que:\\
+\begin{align*}
+    EI\delta&=\frac{5}{12}P\cdto\delta\cdot h\cdot 0,5h\cdot 2+P\cdot\delta\cdot 0,5h\cdot 0,66h\frac{1}{3}\cdot2\\
+    P&=\frac{EI}{0,639h^2}
+\end{align*}
+Como el $P_{cr}$ Euler es igual a:
+\begin{align*}
+    P_{cr} &= \frac{\pi^2 EI}{(kh)^2}\\
+    k &= \sqrt{0,639\cdot\pi^2}\\
+    k &= 2,51
+\end{align*}
+Luego, la esbeltez del sistema estaría dada como:
+\begin{align*}
+    \frac{kL}{r}&=\frac{2,51\cdot 4,5cm}{14cm}
+    &=80,67
+\end{align*}
+De acuerdo con la ecuación E3 del AISC, este valor se debe comparar con:
+\begin{align*}
+    4,71\sqrt{\frac{E}{F_y}}&=132,43\\
+    80,67&<132,43
+\end{align*}
+Como $\frac{kL}{r}$ es menor que $4,71\sqrt{\frac{E}{F_y}}$, se deberá ocupar la fórmula E3-2 del AISC, es decir:
+\begin{align*}
+    F_{cr}&=\left[0,658^\frac{F_y}{F_e}\right]\cdot F_y\\
+    Fe&=\frac{\pi^2 E}{\frac{kL}{r}} \text{\hspace{15mm}(Tensión crítica de Euler)}
+\end{align*}
+Luego, reemplazando las ecuaciones anteriores con los parámetros anteriormente calculados, se tiene:
+\begin{align*}
+    F_e&=303,26 MPa
+    F_{cr}&=178,43 MPa
+\end{align*}
+Finalmente, las tensiones admisibles ASD y LRFD respectivamente son:\\
+Para ASD:\\
+ \begin{align*}
+     F_{adm}&=\frac{F_{cr}}{\Omega}\\
+     &=\frac{178,43 MPa}{1,67}\\
+     &=106,85 MPa\\
+     A&=228cm^2\\
+     P_{adm}&=2436kN\\
+     P_{t}&<P_{adm}\hspace{10mm} \rightarrow\textbf{\hspace{5mm}Cumple.}
+ \end{align*}
+Para LRFD:\\
+ \begin{align*}
+     F_{n}&=\phi F_{cr}\\
+     &=0,9\cdot 178,43 MPa\\
+     &=160,59 MPa\\
+     A&=228cm^2\\
+     P_{n}&=3657kN\\
+     P_u&<P_{n}\hspace{10mm} \rightarrow\textbf{\hspace{5mm}Cumple.}
+ \end{align*}
+\end{example}
+\section{Ejercicios}
