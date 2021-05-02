@@ -63,18 +63,21 @@ P_{cr}&=\frac{\pi^2 EI_s}{\beta^2 h^2}\\
 \end{exercise}
 \section{Diseño de elementos en compresión}
 \section{Ejemplos de aplicación}
-\\
-\begin{example}[Ejemplo de diseño a compresión de marco simple.]
-Se deberá diseñar el perfil de la estructura de la figura 3, considerando los siguientes parámetros:
+\begin{example}[Ejemplo de diseño a compresión de marco simple]
+Se deberá diseñar el perfil de la estructura de la Figura \ref{fig:marco1}, considerando los siguientes parámetros:\\
+\begin{figure}[h!]
+    \centering
+    \includesvg{Pictures/marco1_cap3.svg}
+    \caption{Marco plano sometido a compresión}
+    \label{fig:marco1}
+\end{figure}
 Acero $A36$ $(253 MPa)$\\
 Elasticidad $E=200.000 MPa$\\
 $H=4,5 m$\\
 $L=6,0 m$\\
-\\
 Las cargas en los extremos serán las siguientes:\\
 $DL=100 tonf$\\
 $LL=125 tonf$\\
-\\
 Con combinaciones de carga para ASD y LRFD:\\
 ASD:\\
 $C=DL+LL$\\
@@ -100,8 +103,8 @@ $P_{n}=3200kN$ Carga nominal
 \centering
 \begin{tabular}{ccccccc}
 \hline
-\multirow{2}{*}{W12x120} & b_f      & t_f      & A        & d       & t_w     & r     \\ \cline{2-7} 
-                         & 12.32in & 1.105in & 35.3in^2 & 13.12in & 0.71in & 5.5in \\ \hline
+\multirow{2}{*}{W12x120} & $b_f$      & $t_f$      & $A$        & $d$       & $t_w$     & $r$     \\ \cline{2-7} 
+                         & 12.32in & 1.105in & $35.3in^2$ & 13.12in & 0.71in & 5.5in \\ \hline
 \end{tabular}
 \end{table}
 Obtenidos los parámetros geométricos del perfil, se deberá comenzar con la comprobación, en un primer acercamiento se procederá a calcular las esbelteces del alma y el ala mediante el uso de las relaciones ancho-espesor:\\
@@ -131,8 +134,8 @@ Como ambos casos de las relaciones ancho espesor resultan menores que los limite
 Para poder resolver el problema de diseño, se necesita evaluar la esbeltez del perfil, es decir la relación $\frac{kL}{r}$ y para ello es necesario saber el valor de $k$ que es el factor de longitud efectiva de los elementos sometidos a cargas de compresión. Por lo que se es necesario realizar el cálculo de este factor.\\
 Se utiliza el método de doble integración, en donde se tiene que:\\
 \begin{align*}
-    EI\delta&=\frac{5}{12}P\cdto\delta\cdot h\cdot 0,5h\cdot 2+P\cdot\delta\cdot 0,5h\cdot 0,66h\frac{1}{3}\cdot2\\
-    P&=\frac{EI}{0,639h^2}
+    EI\delta&=\frac{5}{12}P \cdot \delta \cdot h \cdot 0,5h \cdot 2+P \cdot \delta \cdot 0,5h \cdot 0,66 \cdot h \frac{1}{3} \cdot 2\\
+    P&=\frac{EI}{0,639h^2}\\
 \end{align*}
 Como el $P_{cr}$ Euler es igual a:
 \begin{align*}
