@@ -4,9 +4,164 @@
 
 \chapterimage{../Pictures/head2.png} % Chapter heading image
 \chapter{Elementos en flexión}
-\section{Tipos de elementos en flexión}
-\section{Diseño de elementos en flexión}
-\subsection{Diseño por flexión}
-\subsection{Diseño por cortante}
+\section{Análisis de elementos en flexión}
+Se comenzará a estudiar una viga simplemente apoyada de sección rectangular sometida a una carga uniformemente distribuida.\\
+Se supone que en principio que la viga solo incursiona en el rango lineal elástico del material, por lo que no existe plastificación.\\
+Esto significa que solo se considera el módulo elástico del perfil.
+El material será acero para efectos de análisis.
+\begin{align}
+    F_y &= \frac{M\cdot \Bar{y}}{I}\\
+    F_y &= \frac{M}{S}
+\end{align}
+donde:
+\begin{align}
+    S = \frac{I}{\Bar{y}} \hspace{10mm}\text{ó}\hspace{10mm} W = \frac{I}{\Bar{y}}
+\end{align}
+Se tiene entonces de acuerdo a las consideraciones geométricas y propiedades mecánicas del material que:\\
+\begin{align} \label{eq_epsilon}
+    \epsilon &= \frac{y}{\rho}\\
+    M &= \int_A yfdA\\
+\end{align}
+como $f=E\cdot\epsilon$, entonces la ecuación anterior queda:\\
+\begin{align}
+    M &= \frac{E}{\rho}\int_A y^2dA=\frac{EI}{\rho}
+\end{align}
+Si se reemplaza $\rho$ de acuerdo con la ecuación (\ref{eq_epsilon}), se tiene que:\\
+\begin{align}
+    M &= \frac{EI\epsilon}{y} = \frac{fI}{y}
+\end{align}
+En una viga rectangular, el momento $M_y$ elástico máximo, está dado por la relación entre la tensión de fluencia $F_y$ y la inercia dividida por la distancia desde el eje neutro a la fibra extrema.\\
+Esto es:
+\begin{align}
+    M_y &= \frac{F_y\cdot I}{\Bar{y}}
+\end{align}
+La inercia de una sección rectangular de ancho $b$ y alto $d$:
+\begin{align}
+    I &= \frac{bd^3}{12}
+\end{align}
+En este caso $\Bar{y}=d/2$ y la tensión $f = F_y $ por lo que la ecuación del momento resultante sería:
+\begin{align}
+    M_y &= \frac{F_y\cdot bd^3/12}{d/2}\\
+        &= \frac{F_ybd^2}{6}
+\end{align}
+Lo que es precisamente el resultado del momento elástico para una viga de sección rectangular.\\
+\begin{example}[Viga W sometida a flexión pura]
+Se le solicita calcular el módulo elástico, plástico y el factor de forma de una viga W sometida a flexión, la sección sería un perfil W18x50.\\
+\\
+\textit{Solución:}\\
+Primero se deben conocer las propiedades geométricas de la sección:\\
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccccccc}
+\hline
+\multirow{2}{*}{W18x50} & $b$      & $t_f$      & $d$        & $t_w$       & $I_y$     & $S_y$     \\ \cline{2-7} 
+                         & 190mm & 14,5mm & 457mm & 9,0mm & 33.415$cm^4$ & $1462cm^3$ \\ \hline
+\end{tabular}
+\end{table}
+La módulo elástico se puede calcula directamente de las propiedades, es decir, es la inercia dividida por la mitad de la altura. Lo que se puede corroborar mediante el análisis del momento elástico:
+\begin{align*}
+    M_y &= \frac{F_y}{6d}(bd^3-(b-t_w)(d-2t_f)^3)\\
+        &= F_y\cdot S_y\\
+    S_y &= \frac{bd^3-(b-t_w)(d-2t_f)^3}{6d}\\
+        &=1438cm^3 (\approx 1462cm^3)\\
+\end{align*}
+El módulo plástico también es posible de calcular siguiendo las indicaciones anteriores:\\
+\begin{align*}
+    M_p &= \F_y\left(\frac{t_w(d-2t_f)^2}{4}+bt_f\left(\frac{2d-2t_f}{2}\right)\right)\\
+        &= F_y\cdot Z\\
+      Z &= \frac{t_w(d-2t_f)^2}{4}+bt_f\left(\frac{2d-2t_f}{2}\right)\\
+        &= 1631cm^3\\
+\end{align*}
+Luego el factor de forma resulta:\\
+\begin{align*}
+    \frac{M_p}{M_y} &= \frac{Z}{S_y}\\
+                    &= \frac{1438cm^3}{1631cm^3}\\
+                    &= 1,134 (\approx 1,14)\\
+\end{align*}
+\end{example}
+\section{Pandeo lateral torsional}
+En general, las secciones que se usan como vigas donde el momento de inercia en torno al eje fuerte es considerable mayor que el del el eje débil. Esto es así para producir secciones optimizadas y económicas.\\
+En consecuencia, son secciones débiles a torsión y a flexión en torno a su eje débil, por lo que en la algunos casos se deberá disponer de un arriostramiento para ser sostenidas ya que es posible que se produzca un fenómeno conocido como pandeo lateral o pandeo lateral torsional, que es a la vez un alabeo lateral y una torsión.
+\begin{align}
+    \label{Eq_Mx}
+    -EI_x\frac{d^2v}{dz^2} &= M_x\\
+    \label{Eq_Mb}
+    -EI_y\frac{d^2u}{dz^2} &= M_x\beta\\
+\end{align}
+El momento torsor por su lado está dado por la ecuación \ref{Eq_T}, que se encuentra derivada en el capítulo 3:
+\begin{align}
+    \label{Eq_T}
+    GJ\frac{d\beta}{dz}-EC_w\frac{d^3\beta}{dz^3} &= T
+\end{align}
+Donde T sería el momento torsor y según el diagrama estaría dado por:
+\begin{align}
+    \label{Eq_T_Mx}
+    T &= M_x\frac{du}{dz}
+\end{align}
+Por lo tanto, la ecuación \ref{Eq_T} resulta en:
+\begin{align}
+    GJ\frac{d\beta}{dz}-EC_w\frac{d^3\beta}{dz^3} - M_x\frac{du}{dz}&= 0
+\end{align}
+Esta ecuación se puede reducir diferenciándola con respecto a $z$ y eliminando $d^2u/dz^2$ utilizando la ecuación \ref{Eq_Mb}:\\
+\begin{align}
+\label{Eq_PLT}
+     EC_w\frac{d^4\beta}{dz^4}- GJ\frac{d^2\beta}{dz^2} - \frac{M_x^2}{EI_y}\beta &= 0
+\end{align}
+Las condiciones de contorno para la solución de la ecuación \ref{Eq_PLT} son las siguientes:
+\begin{align*}
+    \beta_{L=0} &= 0\\
+    \beta_{L=L} &= 0\\
+    \beta_{L=L/2} &= \beta_{L/2}
+\end{align*}
+Por lo tanto la ecuación \ref{Eq_PLT} se satisface si:
+\begin{align}
+    \beta &= \beta_{L/2}\sin{\frac{\pi z}{L}}
+\end{align}
+Cuyas derivadas son las siguientes:
+\begin{align}
+    \frac{d^2\beta}{dz^2} = \frac{\pi^2}{L^2}\beta_{L/2}\sin{\frac{\pi z}{L}}\\
+    \frac{d^4\beta}{dz^4} = \frac{\pi^4}{L^4}\beta_{L/2}\sin{\frac{\pi z}{L}}
+\end{align}
+Por lo que la ecuación \ref{Eq_PLT} resulta finalmente:
+\begin{align}
+    \left(EC_w\frac{\pi^4}{L^4}+ GJ\frac{\pi^2}{L^2} - \frac{M_x^2}{EI_y}\right)\beta_{L/2}\sin{\frac{\pi z}{L}} &= 0
+\end{align}
+Lo que se satisface si $\beta_{L/2}=0$, lo que sería la solución trivial, es decir, no existiendo casi torsión, o cuando:
+\begin{align}
+\label{Eq_TLP2}
+      EC_w\frac{\pi^4}{L^4}+ GJ\frac{\pi^2}{L^2} &= \frac{M_x^2}{EI_y}   
+\end{align}
+La ecuación \ref{Eq_TLP2} es válida solo para las condiciones de contorno expuestas anteriormente. Para considerar otras condiciones de apoyo, en donde por ejemplo pueda existir torsión en el inicio del tramo, una formulación más general sería:
+\begin{align}
+\label{Eq_TLP3}
+    M_{xcr}^2 &= C_b^2\left[\frac{\pi^2}{(kL)^2}EI_yGJ + \frac{\pi^4}{(kL)^4}EI_y\cdot EC_w\right]
+\end{align}
+Donde:\\
+$C_b$ : Coeficiente de momento.\\
+$k$ : Coeficiente de largo efectivo.\\
+$C_w$ : Constante de alabeo.\\
+$J$ : Constante torsional.\\
+El coeficiente de momento $C_b$ puede ser calculado utilizando la siguiente relación:
+\begin{align}
+    C_b &= \frac{12.5M_{max}}{2.5M_{max}+3M_A+4M_B+3M_C}
+\end{align}
+Donde:\\
+$M_{max}$ : Es el mayor momento absoluto en el tramo no arriostrado.\\
+\hspace{10mm}$M_A$ : Es el valor absoluto del momento a 1/4 del tramo.\\
+\hspace{10mm}$M_B$ : Es el mayor valor absoluto del momento a 1/2 del tramo.\\
+\hspace{10mm}$M_C$ : Es el mayor absoluto del momento a 2/4 del tramo no arriostrado.\\
+
+Para el rango inelástico, la ecuación \ref{Eq_TLP3} puede generalizarse utilizando una factor de modificación $\tau$:
+\begin{align}
+    M_{xcrIn}^2 &= M_{xcr}^2\cdot\tau\\
+    \tau &= \frac{E_t}{E}
+\end{align}
+$E_t$ : Módulo tangente.
+\section{Pandeo local de elementos de una viga}
+Para el análisis del pandeo local de alas y almas de la sección transversal de vigas de acero sometidas a flexión, se realiza con el estudio de estabilidad de placas delgadas. Es decir se busca la tensión crítica de pandeo, para placas cargadas en los bordes de su plano.\\
+Para esto se deberá solucionar la ecuación diferencial de equilibrio de placas planas delgadas:
+\section{Tensiones de diseño}
+\subsection{Diseño por flexión ASD}
+\subsection{Diseño por cortante LRFD}
 \section{Ejemplos de aplicación}
 \section{Ejercicios}

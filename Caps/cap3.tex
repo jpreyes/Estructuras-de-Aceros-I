@@ -7,38 +7,36 @@
 \section{Tipos de elementos en compresión}
 \section{Pandeo en columnas}
 \begin{example}[Cálculo de la carga crítica de pandeo]
-\[\left.\begin{matrix}
+\begin{align*}
+\left.\begin{matrix}
 P u2-k\left(\frac{6}{L}\cdot u2-\frac{3}{L}\cdot u1\right)=0\\ P u1-k\left(\frac{6}{L}\cdot u1-\frac{3}{L}\cdot u2\right)=0
-
 \end{matrix}\right\}\Rightarrow \begin{matrix}
 (P-\frac{6k}{L})\cdot u1+\frac{3k}{L}\cdot u2=0\\
 (P-\frac{6k}{L})\cdot u2+\frac{3k}{L}\cdot u1=0
-\end{matrix}\\ \]
-
-\[\begin{pmatrix}
+\end{matrix}\\
+\begin{pmatrix}
 P-\frac{6k}{L} &\frac{3k}{L} \\ 
  \frac{3k}{L}&P-\frac{6k}{L} 
 \end{pmatrix}\begin{Bmatrix}
 u1\\u2
-
 \end{Bmatrix}=\begin{Bmatrix}
 0\\0
-
-\end{Bmatrix}\Rightarrow (P-\frac{6k}{L})^2 u2+\frac{3k}{L}^2=0\]
+\end{Bmatrix}\Rightarrow (P-\frac{6k}{L})^2 u2+\frac{3k}{L}^2=0
+\end{align*}
 \[
 P_1=\frac{9k}{L}\\
 P_2=\frac{3k}{L}\]
 \begin{align*}
-M_r=M_e\\
-M_r=k\cdot\alpha\\
-M_e=P\cdot u\\
-P\cdot u1-k(\alpha_1-\alpha_2)=0\\
-P\cdot u2-k(\alpha_3-\alpha_2)=0\\
-u1=\alpha_1\frac{L}{3}\rightarrow \alpha_1=\frac{3}{L}u1\\
-u2=\alpha_3\frac{L}{3}\rightarrow \alpha_3=\frac{3}{L}u2\\
-u2-u1=\alpha_2\frac{L}{3}\rightarrow \alpha_2=\frac{3}{L}(u2-u1)\\
-\frac{5}{12}L(M_1\cdot M_2)L=h\\
-M_1=P\cdot \Delta\\
+M_r &= M_e\\
+M_r &= k\cdot\alpha\\
+M_e &= P\cdot u\\
+P\cdot u1-k(\alpha_1-\alpha_2) &= 0\\
+P\cdot u2-k(\alpha_3-\alpha_2) &= 0\\
+u1 &= \alpha_1\frac{L}{3}\rightarrow \alpha_1 = \frac{3}{L}u1\\
+u2 &= \alpha_3\frac{L}{3}\rightarrow \alpha_3 = \frac{3}{L}u2\\
+u2-u1 &= \alpha_2\frac{L}{3}\rightarrow \alpha_2 = \frac{3}{L}(u2-u1)\\
+\frac{5}{12}L(M_1\cdot M_2)L &= h\\
+M_1 &= P\cdot \Delta\\
 \end{align*}
 \end{example}
 \begin{exercise}[Ejercicio de aplicación pandeo de columna]
@@ -63,9 +61,10 @@ P_{cr}&=\frac{\pi^2 EI_s}{\beta^2 h^2}\\
 \end{exercise}
 \section{Diseño de elementos en compresión}
 \section{Ejemplos de aplicación}
-\begin{example}[Ejemplo de diseño a compresión de marco simple]
+\begin{example}
+[Ejemplo de diseño a compresión de marco simple]
 Se deberá diseñar el perfil de la estructura de la Figura \ref{fig:marco1}, considerando los siguientes parámetros:\\
-\begin{figure}[h!]
+\begin{figure}
     \centering
     \includesvg{Pictures/marco1_cap3.svg}
     \caption{Marco plano sometido a compresión}
@@ -91,15 +90,15 @@ Considerar un perfil W12x120\\
 Primero se deberán calcular las combinaciones de carga para ASD y LRFD:\\
 ASD\\
 $C_{ASD}=1000kN+1250kN=2250 kN$\\
-$P_{t}=2250kN$ Carga de trabajo
+$P_{t}=2250kN$ Carga de trabajo\\
 LRFD:\\
 $C_{LRFD}=1,2\cdot100kN+1,6\cdot 125kN=3200 kN $\\
-$P_{n}=3200kN$ Carga nominal
+$P_{n}=3200kN$ Carga nominal\\
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \begin{tabular}{ccccccc}
 \hline
@@ -118,7 +117,7 @@ De acuerdo con los parámetros geométricos del perfil y del material se tiene q
     0,56\sqrt{\frac{200.000MPa}{253MPa}}=15,74\\
     5,58<15,74
 \end{align*}
-Por lo tanto no hay pandeo local del ala.
+Por lo tanto no hay pandeo local del ala.\\
 También deberá ser necesario realizar las verificaciones de esbeltez del alma, por lo que se procederá a comprobar las relaciones ancho espesor como sigue:
 \begin{align*}
     \frac{d}{t_w}<1,49\sqrt{\frac{E}{F_y}}
@@ -129,9 +128,16 @@ De acuerdo a lo indicado en el párrafo anterior, se tiene que para el alma del 
     1,49\sqrt{\frac{200.000MPa}{253MPa}}=41,89\\
     18,48<41,89
 \end{gather*}
-Tampoco hay presencia de pandeo local del alma. De hecho en ambos casos los valores son menos de un 45\% del valor límite.
+Tampoco hay presencia de pandeo local del alma. De hecho en ambos casos los valores son menos de un 45\% del valor límite.\\
 Como ambos casos de las relaciones ancho espesor resultan menores que los limites, se dice que la sección es \textbf{compacta} y por lo tanto se deberán usar las formulaciones para ello.\\
-Para poder resolver el problema de diseño, se necesita evaluar la esbeltez del perfil, es decir la relación $\frac{kL}{r}$ y para ello es necesario saber el valor de $k$ que es el factor de longitud efectiva de los elementos sometidos a cargas de compresión. Por lo que se es necesario realizar el cálculo de este factor.\\
+\begin{figure}[h]
+    \centering
+    \includesvg{Pictures/marco2_cap3-02.svg}
+    \caption{Carga real, desplazamiento y momentos flectores del sistema del marco plano.}
+    \label{fig:marco2}
+\end{figure}
+Para poder resolver el problema de diseño, se necesita evaluar la esbeltez del perfil, es decir la relación $\frac{kL}{r}$ y para ello es necesario saber el valor de $k$ que es el factor de longitud efectiva de los elementos sometidos a cargas de compresión.\\
+Por lo que se es necesario realizar el cálculo de este factor.\\
 Se utiliza el método de doble integración, en donde se tiene que:\\
 \begin{align*}
     EI\delta&=\frac{5}{12}P \cdot \delta \cdot h \cdot 0,5h \cdot 2+P \cdot \delta \cdot 0,5h \cdot 0,66 \cdot h \frac{1}{3} \cdot 2\\
@@ -145,7 +151,7 @@ Como el $P_{cr}$ Euler es igual a:
 \end{align*}
 Luego, la esbeltez del sistema estaría dada como:
 \begin{align*}
-    \frac{kL}{r}&=\frac{2,51\cdot 4,5cm}{14cm}
+    \frac{kL}{r}&=\frac{2,51\cdot 4,5cm}{14cm}\\
     &=80,67
 \end{align*}
 De acuerdo con la ecuación E3 del AISC, este valor se debe comparar con:
@@ -156,11 +162,11 @@ De acuerdo con la ecuación E3 del AISC, este valor se debe comparar con:
 Como $\frac{kL}{r}$ es menor que $4,71\sqrt{\frac{E}{F_y}}$, se deberá ocupar la fórmula E3-2 del AISC, es decir:
 \begin{align*}
     F_{cr}&=\left[0,658^\frac{F_y}{F_e}\right]\cdot F_y\\
-    Fe&=\frac{\pi^2 E}{\frac{kL}{r}} \text{\hspace{15mm}(Tensión crítica de Euler)}
+    Fe&=\frac{\pi^2 E}{(\frac{kL}{r})^2} \text{\hspace{15mm}(Tensión crítica de Euler)}
 \end{align*}
 Luego, reemplazando las ecuaciones anteriores con los parámetros anteriormente calculados, se tiene:
 \begin{align*}
-    F_e&=303,26 MPa
+    F_e&=303,26 MPa\\
     F_{cr}&=178,43 MPa
 \end{align*}
 Finalmente, las tensiones admisibles ASD y LRFD respectivamente son:\\
